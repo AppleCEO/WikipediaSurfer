@@ -8,32 +8,17 @@
 
 import Foundation
 
-enum SearchResultElement: Codable {
-    case string(String)
-    case stringArray([String])
+struct SearchResult: Codable {
+    let search: String
+    let title: [String]
+    let description: [String]
+    let url: [String]
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode([String].self) {
-            self = .stringArray(x)
-            return
-        }
-        if let x = try? container.decode(String.self) {
-            self = .string(x)
-            return
-        }
-        throw DecodingError.typeMismatch(SearchResultElement.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for SearchResultElement"))
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .string(let x):
-            try container.encode(x)
-        case .stringArray(let x):
-            try container.encode(x)
-        }
+        var unkeyedContainer = try decoder.unkeyedContainer()
+        search = try unkeyedContainer.decode(String.self)
+        title = try unkeyedContainer.decode([String].self)
+        description = try unkeyedContainer.decode([String].self)
+        url = try unkeyedContainer.decode([String].self)
     }
 }
-
-typealias SearchResult = [SearchResultElement]
