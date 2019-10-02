@@ -1,0 +1,6 @@
+framework module Pods_WikipediaSurfer {
+  umbrella header "Pods-WikipediaSurfer-umbrella.h"
+
+  export *
+  module * { export * }
+}

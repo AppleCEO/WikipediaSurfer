@@ -3,18 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C2C258781C8842FD689BC6 /* Pods_WikipediaSurfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F1571179FE958EAEAE49CF /* Pods_WikipediaSurfer.framework */; };
 		3313913D2343274700BE3C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313913C2343274700BE3C99 /* AppDelegate.swift */; };
 		3313913F2343274700BE3C99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313913E2343274700BE3C99 /* ViewController.swift */; };
 		331391422343274700BE3C99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 331391402343274700BE3C99 /* Main.storyboard */; };
 		331391442343274800BE3C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331391432343274800BE3C99 /* Assets.xcassets */; };
 		331391472343274800BE3C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 331391452343274800BE3C99 /* LaunchScreen.storyboard */; };
+		3313914F23432F6300BE3C99 /* JSONReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313914E23432F6300BE3C99 /* JSONReceiver.swift */; };
+		331391522343344100BE3C99 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331391512343344100BE3C99 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20F1571179FE958EAEAE49CF /* Pods_WikipediaSurfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikipediaSurfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331391392343274700BE3C99 /* WikipediaSurfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikipediaSurfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3313913C2343274700BE3C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3313913E2343274700BE3C99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,10 @@
 		331391432343274800BE3C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		331391462343274800BE3C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		331391482343274800BE3C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3313914E23432F6300BE3C99 /* JSONReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONReceiver.swift; sourceTree = "<group>"; };
+		331391512343344100BE3C99 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		475C2D5852796E791EAAC2AD /* Pods-WikipediaSurfer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikipediaSurfer.debug.xcconfig"; path = "Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer.debug.xcconfig"; sourceTree = "<group>"; };
+		582A0CEF4B3C0E86ECAF073B /* Pods-WikipediaSurfer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikipediaSurfer.release.xcconfig"; path = "Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C2C258781C8842FD689BC6 /* Pods_WikipediaSurfer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,8 @@
 			children = (
 				3313913B2343274700BE3C99 /* WikipediaSurfer */,
 				3313913A2343274700BE3C99 /* Products */,
+				F6464FA5AA59DA045F4E2EA9 /* Pods */,
+				46B25CE79FDA7917632DAD45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +65,49 @@
 		3313913B2343274700BE3C99 /* WikipediaSurfer */ = {
 			isa = PBXGroup;
 			children = (
+				337113CD2344821600E17073 /* View */,
+				331391502343343200BE3C99 /* Model */,
 				3313913C2343274700BE3C99 /* AppDelegate.swift */,
 				3313913E2343274700BE3C99 /* ViewController.swift */,
 				331391402343274700BE3C99 /* Main.storyboard */,
 				331391432343274800BE3C99 /* Assets.xcassets */,
 				331391452343274800BE3C99 /* LaunchScreen.storyboard */,
 				331391482343274800BE3C99 /* Info.plist */,
+				3313914E23432F6300BE3C99 /* JSONReceiver.swift */,
 			);
 			path = WikipediaSurfer;
+			sourceTree = "<group>";
+		};
+		331391502343343200BE3C99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				331391512343344100BE3C99 /* SearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		337113CD2344821600E17073 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46B25CE79FDA7917632DAD45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20F1571179FE958EAEAE49CF /* Pods_WikipediaSurfer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6464FA5AA59DA045F4E2EA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				475C2D5852796E791EAAC2AD /* Pods-WikipediaSurfer.debug.xcconfig */,
+				582A0CEF4B3C0E86ECAF073B /* Pods-WikipediaSurfer.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3313914B2343274800BE3C99 /* Build configuration list for PBXNativeTarget "WikipediaSurfer" */;
 			buildPhases = (
+				3AD3100D71901DC0917A60DF /* [CP] Check Pods Manifest.lock */,
 				331391352343274700BE3C99 /* Sources */,
 				331391362343274700BE3C99 /* Frameworks */,
 				331391372343274700BE3C99 /* Resources */,
+				B6394B87774BAFD8C7E7C3BA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +178,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3AD3100D71901DC0917A60DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WikipediaSurfer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6394B87774BAFD8C7E7C3BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		331391352343274700BE3C99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3313914F23432F6300BE3C99 /* JSONReceiver.swift in Sources */,
 				3313913F2343274700BE3C99 /* ViewController.swift in Sources */,
+				331391522343344100BE3C99 /* SearchResult.swift in Sources */,
 				3313913D2343274700BE3C99 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +372,7 @@
 		};
 		3313914C2343274800BE3C99 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 475C2D5852796E791EAAC2AD /* Pods-WikipediaSurfer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +391,7 @@
 		};
 		3313914D2343274800BE3C99 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 582A0CEF4B3C0E86ECAF073B /* Pods-WikipediaSurfer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
