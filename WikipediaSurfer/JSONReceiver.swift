@@ -11,8 +11,6 @@ import RxSwift
 
 struct JSONReceiver {
     static func getJson(search: String) -> Observable<SearchResult> {
-        var searchResult = SearchResult()
-    
         let result = Observable.just(search)
             .map {
                 $0.replacingOccurrences(of: " ", with: "%20")
@@ -31,7 +29,7 @@ struct JSONReceiver {
                         
                         let decoder: JSONDecoder = JSONDecoder()
                         do {
-                            searchResult =  try decoder.decode(SearchResult.self, from: data)
+                            let searchResult =  try decoder.decode(SearchResult.self, from: data)
                             observable.onNext(searchResult)
                             observable.onCompleted()
                         } catch {
