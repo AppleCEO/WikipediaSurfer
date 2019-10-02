@@ -12,6 +12,8 @@ import RxCocoa
 
 class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
+    var searchResult: Observable<SearchResult>?
+    
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -19,12 +21,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
-        let result = JSONReceiver.getJson(search: "Hello world")
-        result
+        searchResult = JSONReceiver.getJson(search: "Hello world")
+        searchResult?
             .subscribe(onNext: { element in
                 dump(element)
             })
             .disposed(by: disposeBag)
     }
 }
-

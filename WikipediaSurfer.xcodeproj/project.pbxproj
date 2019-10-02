@@ -65,7 +65,7 @@
 		3313913B2343274700BE3C99 /* WikipediaSurfer */ = {
 			isa = PBXGroup;
 			children = (
-				337113CD2344821600E17073 /* View */,
+				337113CE2344871F00E17073 /* View */,
 				331391502343343200BE3C99 /* Model */,
 				3313913C2343274700BE3C99 /* AppDelegate.swift */,
 				3313913E2343274700BE3C99 /* ViewController.swift */,
@@ -86,7 +86,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		337113CD2344821600E17073 /* View */ = {
+		337113CE2344871F00E17073 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
