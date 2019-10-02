@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UISearchBarDelegate {
+    @IBOutlet weak var searchBar: UISearchBar!
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        searchBar.delegate = self
+        
+        let result = JSONReceiver.getJson(search: "Hello world")
+        result
+            .subscribe(onNext: { element in
+                dump(element)
+            })
+            .disposed(by: disposeBag)
     }
-
-
 }
 
