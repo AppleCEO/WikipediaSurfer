@@ -49,4 +49,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentRowOfList = searchResult?.url[indexPath.row]
+        
+        if let url = URL(string: currentRowOfList ?? "www.apple.com") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 }
