@@ -51,6 +51,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            searchResult = nil
+            tableView.reloadData()
+        }
+        
         searchOb = JSONReceiver.getJson(search: searchText)
         searchOb?
             .subscribe(onNext: { element in
