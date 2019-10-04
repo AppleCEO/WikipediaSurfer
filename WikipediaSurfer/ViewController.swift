@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,16 +24,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        searchOb = JSONReceiver.getJson(search: "Hello world")
-        searchOb?
-            .subscribe(onNext: { element in
-                self.searchResult = element
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
-            .disposed(by: disposeBag)
     }
 }
 
@@ -56,5 +46,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if let url = URL(string: currentRowOfList ?? "www.apple.com") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchOb = JSONReceiver.getJson(search: searchText)
+        searchOb?
+            .subscribe(onNext: { element in
+                self.searchResult = element
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
