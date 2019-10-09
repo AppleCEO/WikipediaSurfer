@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var searchOb: Observable<SearchResult>?
-    var recentSearches = [String]()
+    var recentSearches = [(String,Date)]()
     var searchResult: SearchResult?
     var disposeBag = DisposeBag()
     
@@ -54,11 +54,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let searchText = searchBar.text, searchText != "" {
             cell.textLabel?.text = searchResult?.title[indexPath.row]
+            cell.detailTextLabel?.text = nil
             return cell
         }
         
         let reverseRow = recentSearches.count-indexPath.row-1
-        cell.textLabel?.text = recentSearches[reverseRow]
+        cell.textLabel?.text = recentSearches[reverseRow].0
+        
+        let dateString = DateConverter.dateToString(date: recentSearches[reverseRow].1)
+        cell.detailTextLabel?.text = dateString
+        
         return cell
     }
     
@@ -68,20 +73,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         guard searchText != "" else {
-            searchBar.text = recentSearches[indexPath.row]
-            search(recentSearches[indexPath.row])
+            searchBar.text = recentSearches[indexPath.row].0
+            search(recentSearches[indexPath.row].0)
             return
         }
         
         let urlString = searchResult?.url[indexPath.row]
         
-        if !recentSearches.contains(searchText) {
-            while recentSearches.count >= 10 {
-                recentSearches.remove(at: 0)
-            }
-            
-            recentSearches.append(searchText)
+        
+        while recentSearches.count >= 10 {
+            recentSearches.remove(at: 0)
         }
+            
+        recentSearches.append((searchText, Date()))
         
         if let url = URL(string: urlString ?? "www.apple.com") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

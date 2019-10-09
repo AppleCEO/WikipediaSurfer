@@ -15,6 +15,7 @@
 		331391472343274800BE3C99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 331391452343274800BE3C99 /* LaunchScreen.storyboard */; };
 		3313914F23432F6300BE3C99 /* JSONReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313914E23432F6300BE3C99 /* JSONReceiver.swift */; };
 		331391522343344100BE3C99 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331391512343344100BE3C99 /* SearchResult.swift */; };
+		3353101D234DEC35008F2EDA /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353101C234DEC35008F2EDA /* DateConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		331391482343274800BE3C99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3313914E23432F6300BE3C99 /* JSONReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONReceiver.swift; sourceTree = "<group>"; };
 		331391512343344100BE3C99 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		3353101C234DEC35008F2EDA /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		475C2D5852796E791EAAC2AD /* Pods-WikipediaSurfer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikipediaSurfer.debug.xcconfig"; path = "Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer.debug.xcconfig"; sourceTree = "<group>"; };
 		582A0CEF4B3C0E86ECAF073B /* Pods-WikipediaSurfer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WikipediaSurfer.release.xcconfig"; path = "Target Support Files/Pods-WikipediaSurfer/Pods-WikipediaSurfer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				331391452343274800BE3C99 /* LaunchScreen.storyboard */,
 				331391482343274800BE3C99 /* Info.plist */,
 				3313914E23432F6300BE3C99 /* JSONReceiver.swift */,
+				3353101C234DEC35008F2EDA /* DateConverter.swift */,
 			);
 			path = WikipediaSurfer;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				3313913F2343274700BE3C99 /* ViewController.swift in Sources */,
 				331391522343344100BE3C99 /* SearchResult.swift in Sources */,
 				3313913D2343274700BE3C99 /* AppDelegate.swift in Sources */,
+				3353101D234DEC35008F2EDA /* DateConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
