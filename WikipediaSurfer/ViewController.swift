@@ -26,30 +26,64 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func search(_ searchText: String) {
+        searchOb = JSONReceiver.getJson(search: searchText)
+        searchOb?
+            .subscribe(onNext: { element in
+                self.searchResult = element
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResult?.title.count ?? 0
+        if let searchText = searchBar.text, searchText != "" {
+            return searchResult?.title.count ?? 0
+        }
+        
+        return recentSearches.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = searchResult?.title[indexPath.row]
+        if let searchText = searchBar.text, searchText != "" {
+            cell.textLabel?.text = searchResult?.title[indexPath.row]
+            return cell
+        }
         
+        let reverseRow = recentSearches.count-indexPath.row-1
+        cell.textLabel?.text = recentSearches[reverseRow]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentRowOfList = searchResult?.url[indexPath.row]
         guard let searchText = searchBar.text else {
             return
         }
         
-        recentSearches.append(searchText)
+        guard searchText != "" else {
+            searchBar.text = recentSearches[indexPath.row]
+            search(recentSearches[indexPath.row])
+            return
+        }
         
-        if let url = URL(string: currentRowOfList ?? "www.apple.com") {
+        let urlString = searchResult?.url[indexPath.row]
+        
+        if !recentSearches.contains(searchText) {
+            while recentSearches.count >= 10 {
+                recentSearches.remove(at: 0)
+            }
+            
+            recentSearches.append(searchText)
+        }
+        
+        if let url = URL(string: urlString ?? "www.apple.com") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -63,14 +97,8 @@ extension ViewController: UISearchBarDelegate {
             return
         }
         
-        searchOb = JSONReceiver.getJson(search: searchText)
-        searchOb?
-            .subscribe(onNext: { element in
-                self.searchResult = element
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
-            .disposed(by: disposeBag)
+        search(searchText)
     }
 }
+
+

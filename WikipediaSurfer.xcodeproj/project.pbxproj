@@ -65,7 +65,6 @@
 		3313913B2343274700BE3C99 /* WikipediaSurfer */ = {
 			isa = PBXGroup;
 			children = (
-				337113CE2344871F00E17073 /* View */,
 				331391502343343200BE3C99 /* Model */,
 				3313913C2343274700BE3C99 /* AppDelegate.swift */,
 				3313913E2343274700BE3C99 /* ViewController.swift */,
@@ -84,13 +83,6 @@
 				331391512343344100BE3C99 /* SearchResult.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		337113CE2344871F00E17073 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		46B25CE79FDA7917632DAD45 /* Frameworks */ = {
