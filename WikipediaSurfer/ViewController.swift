@@ -92,6 +92,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let searchText = searchBar.text, searchText != "" {
+            return nil
+        }
+        
+        return "최근 검색 기록"
+    }
 }
 
 extension ViewController: UISearchBarDelegate {
