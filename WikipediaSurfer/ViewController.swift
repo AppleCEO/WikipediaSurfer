@@ -19,14 +19,6 @@ class ViewController: UIViewController {
     var searchResult: SearchResult?
     var disposeBag = DisposeBag()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        searchBar.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
     func search(_ searchText: String) {
         searchOb = JSONReceiver.getJson(search: searchText)
         searchOb?
