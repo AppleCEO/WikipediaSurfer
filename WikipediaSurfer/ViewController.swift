@@ -73,8 +73,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         guard searchText != "" else {
-            searchBar.text = recentSearches[indexPath.row].0
-            search(recentSearches[indexPath.row].0)
+            let reverseRow = recentSearches.count-indexPath.row-1
+            searchBar.text = recentSearches[reverseRow].0
+            search(recentSearches[reverseRow].0)
             return
         }
         
