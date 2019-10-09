@@ -100,6 +100,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         return "최근 검색 기록"
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let reverseRow = recentSearches.count-indexPath.row-1
+            recentSearches.remove(at: reverseRow)
+
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
 }
 
 extension ViewController: UISearchBarDelegate {
@@ -113,5 +126,3 @@ extension ViewController: UISearchBarDelegate {
         search(searchText)
     }
 }
-
-
