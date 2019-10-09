@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             .subscribe(onNext: { element in
                 self.searchResult = element
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.tableView.reloadSections(IndexSet.init(integersIn: 0...0), with: UITableView.RowAnimation.automatic)
                 }
             })
             .disposed(by: disposeBag)
@@ -98,7 +98,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let reverseRow = recentSearches.count-indexPath.row-1
             recentSearches.remove(at: reverseRow)
 
-            tableView.reloadData()
+            tableView.reloadSections(IndexSet.init(integersIn: 0...0), with: UITableView.RowAnimation.automatic)
         }
     }
     
@@ -111,7 +111,7 @@ extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchResult = nil
-            tableView.reloadData()
+            tableView.reloadSections(IndexSet.init(integersIn: 0...0), with: UITableView.RowAnimation.automatic)
             return
         }
         
