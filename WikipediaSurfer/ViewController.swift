@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var searchOb: Observable<SearchResult>?
-    var recentSearches = ReplaySubject<String>.create(bufferSize: 10)
+    var recentSearches = [String]()
     var searchResult: SearchResult?
     var disposeBag = DisposeBag()
     
@@ -42,13 +42,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentRowOfList = searchResult?.url?[indexPath.row]
+        let currentRowOfList = searchResult?.url[indexPath.row]
         guard let searchText = searchBar.text else {
             return
         }
         
-        recentSearches
-            .onNext(searchText)
+        recentSearches.append(searchText)
         
         if let url = URL(string: currentRowOfList ?? "www.apple.com") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
