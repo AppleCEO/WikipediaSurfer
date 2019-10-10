@@ -84,11 +84,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let title = searchResult?.title[indexPath.row] ?? ""
             let attributedString = NSMutableAttributedString(string: title)
             let sameCharactorLength = getSameCharactorLength(searchText, title)
-            
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 0, length: sameCharactorLength))
             
             cell.textLabel?.attributedText = attributedString
             cell.detailTextLabel?.text = nil
+            
             return cell
         }
         
@@ -105,6 +105,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         guard let searchText = searchBar.text else {
             return
         }
+        view.endEditing(true)
         
         guard searchText != "" else {
             let reverseRow = recentSearches.count-indexPath.row-1
@@ -154,6 +155,7 @@ extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             searchResult = nil
+            view.endEditing(true)
             tableView.reloadSections(IndexSet.init(integersIn: 0...0), with: UITableView.RowAnimation.automatic)
             return
         }
