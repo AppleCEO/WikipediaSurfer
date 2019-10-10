@@ -30,6 +30,25 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    func getSameCharactorLength(_ first: String, _ second: String) -> Int {
+        var sameCharactorLength = 0
+        var shortCharactorLength = first.count
+        let firstCharactors = Array(first)
+        let secondCharactors = Array(second)
+        
+        if shortCharactorLength > second.count {
+            shortCharactorLength = second.count
+        }
+        
+        for index in 0..<shortCharactorLength {
+            if firstCharactors[index].uppercased() == secondCharactors[index].uppercased() {
+                sameCharactorLength+=1
+            }
+        }
+        
+        return sameCharactorLength
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -45,7 +64,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if let searchText = searchBar.text, searchText != "" {
-            cell.textLabel?.text = searchResult?.title[indexPath.row]
+            let title = searchResult?.title[indexPath.row] ?? ""
+            let attributedString = NSMutableAttributedString(string: title)
+            let sameCharactorLength = getSameCharactorLength(searchText, title)
+            
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 0, length: sameCharactorLength))
+            
+            cell.textLabel?.attributedText = attributedString
             cell.detailTextLabel?.text = nil
             return cell
         }
@@ -72,7 +97,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let urlString = searchResult?.url[indexPath.row]
-        
         
         while recentSearches.count >= 10 {
             recentSearches.remove(at: 0)
