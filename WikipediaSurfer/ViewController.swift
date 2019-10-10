@@ -15,9 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var searchOb: Observable<SearchResult>?
-    var recentSearches = [(String,Date)]()
+    var recentSearches = [RecentSearch]()
     var searchResult: SearchResult?
     var disposeBag = DisposeBag()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadRecentSearches()
+    }
     
     func search(_ searchText: String) {
         searchOb = JSONReceiver.getJson(search: searchText)
@@ -49,6 +55,17 @@ class ViewController: UIViewController {
         
         return sameCharactorLength
     }
+    
+    func saveRecentSearches(){
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(recentSearches), forKey: "recentSearches")
+    }
+    
+    func loadRecentSearches() {
+        if let data = UserDefaults.standard.object(forKey: "recentSearches") as? Data {
+            
+            recentSearches = try! PropertyListDecoder().decode([RecentSearch].self, from: data)
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -76,9 +93,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let reverseRow = recentSearches.count-indexPath.row-1
-        cell.textLabel?.text = recentSearches[reverseRow].0
+        cell.textLabel?.text = recentSearches[reverseRow].title
         
-        let dateString = DateConverter.dateToString(date: recentSearches[reverseRow].1)
+        let dateString = DateConverter.dateToString(date: recentSearches[reverseRow].date)
         cell.detailTextLabel?.text = dateString
         
         return cell
@@ -91,8 +108,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard searchText != "" else {
             let reverseRow = recentSearches.count-indexPath.row-1
-            searchBar.text = recentSearches[reverseRow].0
-            search(recentSearches[reverseRow].0)
+            searchBar.text = recentSearches[reverseRow].title
+            search(recentSearches[reverseRow].title)
             return
         }
         
@@ -102,7 +119,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             recentSearches.remove(at: 0)
         }
             
-        recentSearches.append((searchText, Date()))
+        recentSearches.append(RecentSearch(title: searchText, date: Date()))
+        saveRecentSearches()
         
         if let url = URL(string: urlString ?? "www.apple.com") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -121,6 +139,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if (editingStyle == .delete) {
             let reverseRow = recentSearches.count-indexPath.row-1
             recentSearches.remove(at: reverseRow)
+            saveRecentSearches()
 
             tableView.reloadSections(IndexSet.init(integersIn: 0...0), with: UITableView.RowAnimation.automatic)
         }
