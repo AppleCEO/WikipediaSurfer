@@ -147,8 +147,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+    func tableView(_ tableView: UITableView, editingStyleForRowAt
+        indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if let searchText = searchBar.text, searchText == "" {
+            return .delete
+        }
+        
+        return .none
     }
 }
 
