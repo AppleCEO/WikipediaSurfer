@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     }
     
     func search(_ searchText: String) {
+        disposeBag = DisposeBag()
         searchOb = JSONReceiver.getJson(search: searchText)
         searchOb?
             .subscribe(onNext: { element in
@@ -133,7 +134,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         
-        return "최근 검색 기록"
+        return "Recent"
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
