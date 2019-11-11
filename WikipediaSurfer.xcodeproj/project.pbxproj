@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22C2C258781C8842FD689BC6 /* Pods_WikipediaSurfer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F1571179FE958EAEAE49CF /* Pods_WikipediaSurfer.framework */; };
+		3300B22D23791DE100F9906E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3300B22C23791DE100F9906E /* DetailViewController.swift */; };
 		3313913D2343274700BE3C99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313913C2343274700BE3C99 /* AppDelegate.swift */; };
 		3313913F2343274700BE3C99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3313913E2343274700BE3C99 /* ViewController.swift */; };
 		331391422343274700BE3C99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 331391402343274700BE3C99 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		20F1571179FE958EAEAE49CF /* Pods_WikipediaSurfer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WikipediaSurfer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3300B22C23791DE100F9906E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		331391392343274700BE3C99 /* WikipediaSurfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikipediaSurfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3313913C2343274700BE3C99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3313913E2343274700BE3C99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3300B22E23791DE600F9906E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3313913E2343274700BE3C99 /* ViewController.swift */,
+				3300B22C23791DE100F9906E /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		331391302343274700BE3C99 = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +80,9 @@
 		3313913B2343274700BE3C99 /* WikipediaSurfer */ = {
 			isa = PBXGroup;
 			children = (
+				3300B22E23791DE600F9906E /* View */,
 				331391502343343200BE3C99 /* Model */,
 				3313913C2343274700BE3C99 /* AppDelegate.swift */,
-				3313913E2343274700BE3C99 /* ViewController.swift */,
 				331391402343274700BE3C99 /* Main.storyboard */,
 				331391432343274800BE3C99 /* Assets.xcassets */,
 				331391452343274800BE3C99 /* LaunchScreen.storyboard */,
@@ -229,6 +240,7 @@
 				3313913D2343274700BE3C99 /* AppDelegate.swift in Sources */,
 				33E0C66C234F063600C77026 /* RecentSearch.swift in Sources */,
 				3353101D234DEC35008F2EDA /* DateConverter.swift in Sources */,
+				3300B22D23791DE100F9906E /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.51;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kiljh.WikipediaSurfer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -401,6 +414,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.51;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kiljh.WikipediaSurfer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

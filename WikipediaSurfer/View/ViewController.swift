@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var recentSearches = [RecentSearch]()
     var searchResult: SearchResult?
     var disposeBag = DisposeBag()
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,13 @@ class ViewController: UIViewController {
         loadRecentSearches()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! DetailViewController
+        if let searchResult = searchResult {
+            destination.referToSearchResult(searchResult, index: index)
+        }
+    }
+
     func search(_ searchText: String) {
         disposeBag = DisposeBag()
         searchOb = JSONReceiver.getJson(search: searchText)
@@ -115,8 +123,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        let urlString = searchResult?.url[indexPath.row]
-        
         while recentSearches.count >= 10 {
             recentSearches.remove(at: 0)
         }
@@ -124,9 +130,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         recentSearches.append(RecentSearch(title: searchText, date: Date()))
         saveRecentSearches()
         
-        if let url = URL(string: urlString ?? "www.apple.com") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        index = indexPath.row
+        self.performSegue(withIdentifier: "moveToDetail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
