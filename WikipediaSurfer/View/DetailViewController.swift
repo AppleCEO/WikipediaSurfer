@@ -15,11 +15,9 @@ class DetailViewController: UIViewController {
     private var searchResult: SearchResult!
     private var index = 0
     
-    @IBAction func urlClick(_ sender: Any) {
-        if let url = URL(string: searchResult.url[index]) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ContainerViewController
+        destination.url = searchResult.url[index]
     }
     
     func referToSearchResult (_ searchResult: SearchResult, index: Int) {
