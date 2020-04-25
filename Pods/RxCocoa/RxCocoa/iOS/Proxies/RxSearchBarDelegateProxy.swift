@@ -22,17 +22,17 @@ open class RxSearchBarDelegateProxy
     , UISearchBarDelegate {
 
     /// Typed parent object.
-    public weak private(set) var searchBar: UISearchBar?
+    public weak private(set) var searchWord: UISearchBar?
 
     /// - parameter searchBar: Parent object for delegate proxy.
-    public init(searchBar: ParentObject) {
-        self.searchBar = searchBar
-        super.init(parentObject: searchBar, delegateProxy: RxSearchBarDelegateProxy.self)
+    public init(searchWord: ParentObject) {
+        self.searchWord = searchWord
+        super.init(parentObject: searchWord, delegateProxy: RxSearchBarDelegateProxy.self)
     }
 
     // Register known implementations
     public static func registerKnownImplementations() {
-        self.register { RxSearchBarDelegateProxy(searchBar: $0) }
+        self.register { RxSearchBarDelegateProxy(searchWord: $0) }
     }
 }
 

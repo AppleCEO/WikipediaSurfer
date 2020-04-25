@@ -112,8 +112,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "DetailViewController"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -128,7 +128,87 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "671F8751-0262-418C-B884-7BB976CCB4E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikipediaSurfer/ApiController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "buildRequest(method:searchWord:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "671F8751-0262-418C-B884-7BB976CCB4E0 - 4a1242ae9659fad0"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of WikipediaSurfer.ApiController.(buildRequest in _ACB1A24D0C4B0F65DEAF551820DB90C9)(method: Swift.String, pathComponent: Swift.String) -&gt; RxSwift.Observable&lt;WikipediaSurfer.ApiController.Result&gt;"
+                  moduleName = "WikipediaSurfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joon-hokil/Developer/RxSwift/WikipediaSurfer/WikipediaSurfer/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "671F8751-0262-418C-B884-7BB976CCB4E0 - 4c332ccb92803f72"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WikipediaSurfer.ApiController.(buildRequest in _ACB1A24D0C4B0F65DEAF551820DB90C9)(method: Swift.String, pathComponent: Swift.String) -&gt; RxSwift.Observable&lt;WikipediaSurfer.ApiController.Result&gt;"
+                  moduleName = "WikipediaSurfer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joon-hokil/Developer/RxSwift/WikipediaSurfer/WikipediaSurfer/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "61">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8527A3E8-AAB1-4909-811D-0C05095D4004"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikipediaSurfer/ApiController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "buildRequest(method:searchWord:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D56DB459-06C7-4794-BB3C-5FC6AE163703"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WikipediaSurfer/ApiController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "buildRequest(method:searchWord:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

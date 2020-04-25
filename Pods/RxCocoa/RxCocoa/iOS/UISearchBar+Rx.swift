@@ -27,19 +27,19 @@ extension Reactive where Base: UISearchBar {
     
     /// Reactive wrapper for `text` property.
     public var value: ControlProperty<String?> {
-        let source: Observable<String?> = Observable.deferred { [weak searchBar = self.base as UISearchBar] () -> Observable<String?> in
-            let text = searchBar?.text
+        let source: Observable<String?> = Observable.deferred { [weak searchWord = self.base as UISearchBar] () -> Observable<String?> in
+            let text = searchWord?.text
 
-            let textDidChange = (searchBar?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBar(_:textDidChange:))) ?? Observable.empty())
-            let didEndEditing = (searchBar?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarTextDidEndEditing(_:))) ?? Observable.empty())
+            let textDidChange = (searchWord?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBar(_:textDidChange:))) ?? Observable.empty())
+            let didEndEditing = (searchWord?.rx.delegate.methodInvoked(#selector(UISearchBarDelegate.searchBarTextDidEndEditing(_:))) ?? Observable.empty())
             
             return Observable.merge(textDidChange, didEndEditing)
-                    .map { _ in searchBar?.text ?? "" }
+                    .map { _ in searchWord?.text ?? "" }
                     .startWith(text)
         }
 
-        let bindingObserver = Binder(self.base) { (searchBar, text: String?) in
-            searchBar.text = text
+        let bindingObserver = Binder(self.base) { (searchWord, text: String?) in
+            searchWord.text = text
         }
         
         return ControlProperty(values: source, valueSink: bindingObserver)
@@ -57,8 +57,8 @@ extension Reactive where Base: UISearchBar {
                 .startWith(index)
         }
         
-        let bindingObserver = Binder(self.base) { (searchBar, index: Int) in
-            searchBar.selectedScopeButtonIndex = index
+        let bindingObserver = Binder(self.base) { (searchWord, index: Int) in
+            searchWord.selectedScopeButtonIndex = index
         }
         
         return ControlProperty(values: source, valueSink: bindingObserver)

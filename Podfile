@@ -8,5 +8,6 @@ target 'WikipediaSurfer' do
   # Pods for WikipediaSurfer
 
 pod 'RxCocoa', '5.0.0'
+pod 'SwiftyJSON'
 
 end
